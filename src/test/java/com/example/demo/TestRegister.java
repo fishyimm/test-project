@@ -1,5 +1,9 @@
 package com.example.demo;
 
+import java.util.UUID;
+
+import org.h2.jdbc.JdbcSQLException;
+import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +16,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.bean.req.RegisterReq;
+import com.example.demo.entity.Register;
 import com.example.demo.repository.RegisterRepository;
 import com.example.demo.service.RegisterService;
 
@@ -62,13 +67,24 @@ public class TestRegister {
 		registerReq.setEmail("aaa@hotmail.com");
 		registerReq.setPassword("123456789123456789");
 		registerService.register(registerReq);
+		
+	}
+	
+	@Test(expected = Exception.class)
+	public void test6RegisterDupEmail() throws Exception {
+		RegisterReq registerReq = new RegisterReq();
+		registerReq.setEmail("b@hotmail.com");
+		registerReq.setPassword("123456789");
+		registerService.register(registerReq);
 	}
 	
 	@Test
-	public void test6RegisterSuccess() throws Exception {
+	public void test7RegisterSuccess() throws Exception {
 		RegisterReq registerReq = new RegisterReq();
-		registerReq.setEmail("aaa@hotmail.com");
+		registerReq.setEmail(UUID.randomUUID().toString() +"b@hotmail.com");
 		registerReq.setPassword("123456789");
-		registerService.register(registerReq);
+		Register register =  registerService.register(registerReq);
+		System.out.println("register = " + register.toString());
+		Assert.assertNotNull("register should not be null", register);
 	}
 }

@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,8 +13,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.bean.req.CreditCardReq;
+import com.example.demo.entity.CreditCard;
 import com.example.demo.repository.CreditCardRepository;
 import com.example.demo.service.CreditCardService;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes= {DemoApplication.class}, webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -78,7 +81,8 @@ public class TestCreditCard {
 		creditCardReq.setCreditCardNo("1234567891234567");
 		creditCardReq.setCardHolder("aaaaaa");
 		creditCardReq.setCardExpireDate("05/18");
-		creditCardService.addCard(creditCardReq);
+		CreditCard creditCard = creditCardService.addCard(creditCardReq);
+		Assert.assertNotNull("creditCard should not be null", creditCard);
 	}
 	
 	@Test
