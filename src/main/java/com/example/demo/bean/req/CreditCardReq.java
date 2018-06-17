@@ -1,8 +1,8 @@
 package com.example.demo.bean.req;
 
-import java.io.Serializable;
-
 import io.swagger.annotations.ApiModelProperty;
+
+import java.io.Serializable;
 
 public class CreditCardReq implements Serializable {
 

@@ -1,5 +1,9 @@
 package com.example.demo;
 
+import com.example.demo.bean.req.CreditCardReq;
+import com.example.demo.entity.CreditCard;
+import com.example.demo.repository.CreditCardRepository;
+import com.example.demo.service.CreditCardService;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -11,11 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.example.demo.bean.req.CreditCardReq;
-import com.example.demo.entity.CreditCard;
-import com.example.demo.repository.CreditCardRepository;
-import com.example.demo.service.CreditCardService;
 
 
 @RunWith(SpringRunner.class)

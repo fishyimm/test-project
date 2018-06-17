@@ -1,8 +1,9 @@
 package com.example.demo;
 
-import java.util.UUID;
-
-import org.h2.jdbc.JdbcSQLException;
+import com.example.demo.bean.req.RegisterReq;
+import com.example.demo.entity.Register;
+import com.example.demo.repository.RegisterRepository;
+import com.example.demo.service.RegisterService;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -15,10 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.bean.req.RegisterReq;
-import com.example.demo.entity.Register;
-import com.example.demo.repository.RegisterRepository;
-import com.example.demo.service.RegisterService;
+import java.util.UUID;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes= {DemoApplication.class}, webEnvironment = WebEnvironment.RANDOM_PORT)
